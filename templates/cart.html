@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Корзина покупок
+{% endblock %}
+
+{% block content %}
+  <h1>Корзина покупок</h1>
+  <table class="cart">
+    <thead>
+      <tr>
+        <th>Картинка</th>
+        <th>Товар</th>
+        <th>Кол-во</th>
+        <th>Размер</th>
+        <th>Удалить</th>
+        <th>Цена за шт</th>
+        <th>Общая стоимость</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+        {% with sneakers=item.sneakers %}
+          <tr>
+            <td>
+              <a href="{{ sneakers.get_absolute_url }}">
+                <img src="{% if sneakers.img %}{{ sneakers.img.url }}{% else %}{% static 'img/no_img.png' %}{% endif %}">
+              </a>
+            </td>
+            <td>{{ sneakers.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.sizes }}</td>
+            <td><a href="{% url 'cart:cart_remove' sneakers.id %}">Удалить</a></td>
+            <td class="num">${{ item.price }}</td>
+            <td class="num">${{ item.total_price }}</td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+      <tr class="total">
+        <td>Всего</td>
+        <td colspan="5"></td>
+        <td class="num">${{ cart.get_total_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="text-right">
+    <a href="{% url 'onlinestore:sneakers_list' %}" class="btn mb-4">В магазин</a>
+    <a class="btn mb-4" href="{% url "orders:order_create" %}">Оформить заказ</a>
+  </p>
+{% endblock %}

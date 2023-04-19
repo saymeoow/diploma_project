@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{% if company %}{{ company.name }}{% else %}Товары{% endif %}
+{% endblock %}
+{% block content %}
+<div id="sidebar">
+<h3>Категория</h3>
+<ul>
+<li {% if not company %}class="selected"{% endif %}>
+<a href="{% url 'store:sneakers_list' %}">Все</a>
+</li>
+{% for c in companies %}
+<li {% if company.slug == c.slug %}class="selected" {% endif %}>
+<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+<div id="main" class="product-list">
+<h1>{% if company %}{{ company.name }}{% else %}Товар{% endif %}</h1>
+{% for sneakers in sneakers%}
+<div class="item">
+<a href="{{ sneakers.get_absolute_url }}">
+    <img width="140" height="140" src="{% if sneakers.img %}{{ sneakers.img.url }}{%else %}{% static 'img/no_img.png' %}{% endif %}">
+</a>
+<a href="{{ sneakers.get_absolute_url }}">{{ sneakers.name }}</a>
+<br>
+{{ sneakers.price }}
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Личные данные
+{% endblock %}
+
+{% block content %}
+
+    {% if user.profile.photo %}
+      <p class="btn-secondary mb-6">Изоображение профиля:</p><br/><img src="{{ user.profile.photo.url }}" height=100 width=100><br><br>
+    {% else %}
+      <p class="btn-secondary mb-6">Изоображение профиля:</p><br/><img src="{% static 'img/no_img.png' %}" height=100 width=100><br><br>
+    {% endif %}
+    <p class="btn-secondary mb-6">Имя: <p class="btn mb-4">{{ user.first_name }}</p></p>
+    <p class="btn-secondary mb-6">Фамилия: <p class="btn mb-4">{{ user.last_name }}</p></p>
+    <p class="btn-secondary mb-6">email: <p class="btn mb-4">{{ user.email }}</p></p>
+    <p class="btn-secondary mb-6">Дата рождения: <p class="btn mb-4">{{ user.profile.date_of_birth }}</p></p>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+История заказов
+{% endblock %}
+
+{% block content %}
+{% if user.id == order.user.id %}
+<a class="btn mb-4">Номер заказа: {{ order.id }}</a>
+{% endif %}
+    <a class="btn mb-4">{{ user.order.paid }}</a>
+
+{% endblock %}

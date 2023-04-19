@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Поддержка{% endblock %}
+{% block content %}
+
+<div class="container">
+               <div class="row" align="center">
+
+                    <div class="col-md-6 col-sm-12">
+
+                              <div class="section-title">
+                                   <h2>Спасибо за ваш отзыв <small><br>если у вас остались еще какие то вопросы вы можете связаться c нами повторно</small></h2>
+                              </div>
+
+                              <div class="col-md-12 col-sm-12">
+                                   <input type="text" class="form-control" placeholder="Введите ваше имя" name="name" required="">
+
+                                   <input type="email" class="form-control" placeholder="Введите ваш email" name="email" required="">
+                              <br/>
+                                   <textarea class="form-control" rows="20" cols="110"  placeholder="Опишите свою проблему" name="message" required=""></textarea>
+                              </div>
+
+                              <div class="col-md-4 col-sm-12">
+                              <a class="btn mb-4" href="/fake_support">Отправить</a>
+                                  <a class="btn-secondary mb-4" href="/">Вернуться в магазин</a>
+                              </div>
+
+
+                    </div>
+               </div>
+          </div>
+
+{% endblock %}

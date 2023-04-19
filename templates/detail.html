@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{ sneakers.name }}
+{% endblock %}
+
+{% block content %}
+<div class="sneakers-detail">
+<img src="{% if sneakers.img %}{{ sneakers.img.url }}{% else %}
+{% static "img/no_img.png" %}{% endif %}">
+<h1>{{ sneakers.name }}</h1>
+<h2>
+<a>{{ sneakers.company }}</a>
+</h2>
+<p class="price">${{ sneakers.price }}</p>
+    <form action="{% url 'cart:cart_add' sneakers.id %}" method='post'>
+        {{ cart_sneakers_form }}
+        {% csrf_token %}
+        {% if request.user.is_authenticated %}
+        <input class="btn-secondary mb-6" type="submit" value="В корзину">
+        {% else %}
+    <div class="popup btn-secondary mb-6" onclick="myFunction()">В корзину
+  <span class="popuptext" id="myPopup">Чтобы добавить товар в корзину необходимо авторизоваться</span>
+</div>
+        {% endif %}
+    </form>
+{{ sneakers.description|linebreaks }}
+
+    <script>
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+</script>
+</div>
+{% endblock %}
