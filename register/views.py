@@ -77,5 +77,3 @@ def profile_personal(request):
     return render(request, 'profile_personal.html')
 
 
-def orders_history(request):
-    return render(request, 'orders_history.html')

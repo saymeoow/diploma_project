@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('onlinestore.urls', namespace='onlinestore')),
     path('auth/', include('register.urls')),
     path('orders/', include('orders.urls', namespace='orders')),
+    path('mail/', include('mail.urls', namespace='mail')),
 
 ]
 

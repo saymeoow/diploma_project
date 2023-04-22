@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'cart',
     'register',
     'orders',
+    'mail.apps.MailConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CART_SESSION_ID = 'cart'
+
+RECIPIENTS_EMAIL = ['meowizy94@gmail.com']
+DEFAULT_FROM_EMAIL = 'meowizy94@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

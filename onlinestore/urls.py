@@ -12,6 +12,4 @@ urlpatterns = [
          name='sneakers_by_company'),
     path('<int:id>/<slug:slug>', views.sneakers_detail,
          name='sneakers_detail'),
-    path('fake_support', views.fake_support,
-         name='fake_support')
 ]

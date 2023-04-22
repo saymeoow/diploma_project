@@ -14,6 +14,4 @@ urlpatterns = [
          name='profile'),
     path('profile_personal', views.profile_personal,
          name='profile_personal'),
-    path('orders_history', views.orders_history,
-         name='orders_history')
 ]

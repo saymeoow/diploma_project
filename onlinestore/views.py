@@ -7,10 +7,6 @@ def support(request):
     return render(request, 'support.html')
 
 
-def fake_support(request):
-    return render(request, 'fake_supp.html')
-
-
 def sneakers_list(request, company_slug=None):
     company = None
     companies = Company.objects.all()

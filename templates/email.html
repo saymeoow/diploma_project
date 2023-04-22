@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Поддержка{% endblock %}
+{% block content %}
+
+        <h1>Если у вас возникли вопросы,свяжитесь с нами</h1>
+        <form action="." method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Отправить">
+        </form>
+
+{% endblock %}
+
